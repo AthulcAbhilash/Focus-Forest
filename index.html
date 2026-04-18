@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Forest</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="left-panel">
+      <div class="brand-row">
+        <img src="logo.png" alt="logo" class="logo" />
+        <h1>Focus Forest</h1>
+      </div>
+
+      <div class="timer-card">
+        <div class="timer-label">Focus Timer</div>
+        <div id="timer" class="timer">25:00</div>
+
+        <div class="controls">
+          <button id="startBtn" class="primary-btn">Start</button>
+          <button id="stopBtn" class="secondary-btn">Stop</button>
+          <button id="resetBtn" class="secondary-btn">Reset</button>
+          <button id="editBtn" class="secondary-btn">Edit</button>
+          <button id="resetTodayBtn" class="secondary-btn">Reset Today</button>
+          <button id="breakBtn" class="secondary-btn">Break</button>
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <div class="stats-row">
+          <span>Today Sessions</span>
+          <strong id="sessionCount">0</strong>
+        </div>
+        <div class="stats-row">
+          <span>Today Focus Hours</span>
+          <strong id="focusHours">0.0h</strong>
+        </div>
+        <div class="stats-row">
+          <span>Forest Filled</span>
+          <strong id="forestFilled">0%</strong>
+        </div>
+      </div>
+
+      <div class="weekly-card">
+        <div class="section-title">Weekly Focus</div>
+
+        <div class="week-row">
+          <span>Mon</span>
+          <div class="bar-track"><div id="bar-mon" class="bar-fill"></div></div>
+          <small id="txt-mon">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Tue</span>
+          <div class="bar-track"><div id="bar-tue" class="bar-fill"></div></div>
+          <small id="txt-tue">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Wed</span>
+          <div class="bar-track"><div id="bar-wed" class="bar-fill"></div></div>
+          <small id="txt-wed">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Thu</span>
+          <div class="bar-track"><div id="bar-thu" class="bar-fill"></div></div>
+          <small id="txt-thu">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Fri</span>
+          <div class="bar-track"><div id="bar-fri" class="bar-fill"></div></div>
+          <small id="txt-fri">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Sat</span>
+          <div class="bar-track"><div id="bar-sat" class="bar-fill"></div></div>
+          <small id="txt-sat">0h</small>
+        </div>
+        <div class="week-row">
+          <span>Sun</span>
+          <div class="bar-track"><div id="bar-sun" class="bar-fill"></div></div>
+          <small id="txt-sun">0h</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="right-panel">
+      <div class="plot-header">
+        <div class="plot-title-row">
+          <h2>Today’s Forest Plot</h2>
+          <button id="historyBtn" class="history-btn">History</button>
+        </div>
+        <p>Complete focus sessions to grow your forest.</p>
+      </div>
+
+      <div class="plot-card">
+        <div id="forestPlot" class="forest-plot"></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="editModal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Edit Focus Time</h3>
+      <label for="customMinutes">Session duration (minutes)</label>
+      <input id="customMinutes" type="number" min="1" max="180" value="25" />
+      <div class="modal-actions">
+        <button id="saveTimeBtn" class="primary-btn">Save</button>
+        <button id="closeModalBtn" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="breakModal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Select Break Time</h3>
+
+      <div class="modal-actions">
+        <button class="secondary-btn" onclick="startBreak(5)">5 min</button>
+        <button class="secondary-btn" onclick="startBreak(15)">15 min</button>
+      </div>
+
+      <label>Custom (minutes)</label>
+      <input id="customBreak" type="number" min="1" max="60" />
+
+      <div class="modal-actions">
+        <button id="startCustomBreak" class="primary-btn">Start</button>
+        <button id="closeBreakModal" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="historyModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Session History</h3>
+        <button id="closeHistory">✕</button>
+      </div>
+
+      <div class="history-list" id="historyList">
+        <!-- JS will populate -->
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

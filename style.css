@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --left-top: #0f3d2e;
+  --left-bottom: #0a241c;
+  --right-top: #dff7df;
+  --right-bottom: #c8efc8;
+  --card-dark: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-light: #eefcf3;
+  --text-soft: #cfe8d7;
+  --accent: #72e09b;
+  --accent-2: #2fbf71;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #e8f7e8;
+  color: #102418;
+  zoom: 0.835;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 32%;
+  min-width: 320px;
+  background: linear-gradient(180deg, var(--left-top), var(--left-bottom));
+  color: var(--text-light);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  flex: 1;
+  background: linear-gradient(180deg, var(--right-top), var(--right-bottom));
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* BRAND */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 34px;
+  height: 34px;
+}
+
+.brand-row h1 {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+/* CARDS */
+.timer-card,
+.stats-card,
+.weekly-card {
+  background: var(--card-dark);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+/* TIMER */
+.timer-label {
+  font-size: 0.9rem;
+  color: var(--text-soft);
+}
+
+.timer {
+  font-size: 58px;
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+/* BUTTONS */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: linear-gradient(180deg, #7cf0aa, #43c977);
+  color: #10311e;
+  font-weight: 700;
+}
+
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+/* STATS */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 0.9rem;
+}
+
+/* WEEKLY */
+.section-title {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.week-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 45px;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.bar-track {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7cf0aa, #34c97a);
+}
+
+/* RIGHT SIDE */
+.plot-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.plot-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.plot-header p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+}
+
+.plot-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.history-btn {
+  background: linear-gradient(180deg, #2fbf71, #1c7f4a);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  align-self: center;
+  white-space: nowrap;
+}
+
+/* PLOT CARD */
+.plot-card {
+  flex: 1;
+  border-radius: 22px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.42);
+  overflow: hidden;
+}
+
+/* FOREST GRID */
+.forest-plot {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 14px;
+  align-items: end;
+}
+
+/* SLOT */
+.plot-slot {
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  position: relative;
+  height: 100%;
+}
+
+/* 🌱 SOIL BASE (THIS IS YOUR MAIN CHANGE) */
+.plot-slot::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  height: 12px;
+  border-radius: 999px;
+
+  /* 🔥 SOIL COLOR */
+  background: linear-gradient(
+    to bottom,
+    #8b5a2b,
+    #5a341a
+  );
+}
+
+/* TREE */
+.tree {
+  font-size: 5rem;
+  transform: translateY(6px);
+  z-index: 1;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 22, 14, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-box {
+  width: 300px;
+  background: #f5fff7;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+/* MODAL BACKDROP */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* HIDE */
+.hidden {
+  display: none;
+}
+
+/* CARD */
+.modal-card {
+  width: 520px;
+  max-height: 75vh;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* HEADER */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LIST */
+.history-list {
+  margin-top: 12px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 6px;
+  scroll-behavior: smooth;
+}
+
+/* ITEM */
+.history-item {
+  background: #f5f5f5;
+  border-left: 4px solid #2fbf71;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  transition: transform 0.15s ease;
+}
+
+.history-item:hover {
+  transform: scale(1.02);
+}
+
+/* RESPONSIVE */
+@media (max-width: 980px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .left-panel {
+    width: 100%;
+  }
+}
